@@ -4,7 +4,7 @@ from multiprocessing import Pool, cpu_count
 import time
 
 # Image parameters
-width, height = 1000, 700
+width, height = 4000, 2800
 max_iter = 300
 xmin, xmax = -2.0, 1.0
 ymin, ymax = -1.5, 1.5
