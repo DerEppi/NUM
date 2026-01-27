@@ -17,16 +17,17 @@ class Atmosphere:
         # Loads cross section file σ(ν) and prepares interpolation in λ
         file = os.path.join(os.path.dirname(__file__), self.p["sigma_file"]) # os used to obtain CO2.dat otherwise it had problems finding it
         nu, sigma_cm2, _ = np.loadtxt(file, unpack=True, skiprows=14)
-        lam_um = 1e4 / nu    
-        sigma_m2 = sigma_cm2 * 1e-4             # ν [cm^-1] → λ [µm]
+        lam_um = 1e4 / nu           # ν [cm^-1] → λ [µm]
+        sigma_m2 = sigma_cm2 * 1e-4             
         
         # linear interpolation to get a continious function for σ
         self.sigma = interp1d(lam_um, sigma_m2, bounds_error=False, fill_value=0.0)
 
     def scale_height(self):
         # Atmospheric scale height [m].
-        m_co2 = 44.01 * 1.66054e-27        # CO₂ molecular mass [kg]
+        m_co2 = 44.009 * 1.66054e-27        # CO₂ molecular mass [kg]
         g = G * self.p["M_pl"] / self.p["R_pl"]**2
+
         # the instruction shows a different formula with R_g but I think it was mixing up terminology with "molar mass" and "mass of a molecule"
         # according to literature (e.g. https://www.spaceacademy.net.au/library/notes/scaleht.htm) H = k*T/m_gas*g with m_gas being molecular mass
         # the formula with R would use molar mass for m_g since R = k*N_A

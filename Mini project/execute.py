@@ -24,5 +24,5 @@ tau = atm.optical_depth(params["lambda_um"], params["R"])
 T = atm.transmissivity(params["lambda_um"], params["R"])
 
 print("Results:")
-print(f"Optical depth: {tau}")
-print(f"Transmissivity: {T}")
+print(f"Optical depth: {tau:.4f}")
+print(f"Transmissivity: {T:.4e}")
