@@ -1,0 +1,27 @@
+1 ) Why is the classical Runge–Kutta (RK4) more precise compared to forward Euler?
+RK4 is a 4th-order method (global error ~ O(h^4)) greatly reducing truncation error, Forward Euler is 1st-order (global error ~ O(h)), using only a single slope
+
+
+2) What is the goal of a least-squares fit, and under which assumption is it also a maximum likelihood estimator?
+find a curve that minimizes error (sum of squared residuals) when compared to the data points
+If measurement errors are Gaussian with constant variance, least-squares = maximum likelihood.
+
+
+3 ) In inverse transform sampling, how do you use a uniform random number u ~ U(0,1) to sample from a target PDF p(x)
+Compute the CDF, draw u ~ U(0,1), then sample x = F^{-1}(u)
+
+
+4) Name one key difference between supervised and unsupervised learning.
+Supervised learning uses labeled data to learn input-output mappings, unsupervised finds patterns without labels (e.g., clustering)
+
+
+5) What is “burn-in” in an MCMC chain?
+it takes a little bit of time until a mcmc chain converges but after this burn-in phase it stays near the converged value
+
+
+6) Why is NumPy vectorization often faster than a Python for-loop for array operations?
+NumPy uses optimized C code to perform the vectorized operations, which is much faster than using the slower python interpreter n times
+
+
+7) What is the main advantage of the FFT over directly computing the DFT?
+faster, O(N log_2(N)) instead of O(N^2)
